@@ -4,14 +4,12 @@ import joblib
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///teamsdb.db'
+CORS(app)
 api = Api(app)
-
-
-
-
 
 
 class Predictor:
@@ -100,7 +98,19 @@ class Predictor:
         return 1 if final_team_a_prob >= threshold else 0
 
 
-
+class TeamData(Resource):
+    def get(self, team):
+        if not team:
+            return {'error': 'Query Parameter Required'}
+        
+        predictor = Predictor()
+        return predictor.team_data[predictor.team_data['Team'] == team].to_json()
+    
+class TeamsData(Resource):
+    def get(self):
+        
+        predictor = Predictor()
+        return predictor.team_data.to_json()
 
 
 class PredictorMatchup(Resource):
@@ -128,14 +138,15 @@ class MatchupData(Resource):
 
         return data.to_json()
 
-
+api.add_resource(TeamData, '/api/info/<team>')
+api.add_resource(TeamsData, '/api/teams')
 api.add_resource(PredictorMatchup, '/api/predict/<team1>/<team2>')
 api.add_resource(MatchupData, '/api/matchup_data/<team1>/<team2>')
 
 
 @app.route('/')
 def home():
-    return '<h1>Valorant Predictor</h1>'
+    return '<div></div>'
 
 
 if __name__ == '__main__':
