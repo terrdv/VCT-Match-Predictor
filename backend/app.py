@@ -104,13 +104,13 @@ class TeamData(Resource):
             return {'error': 'Query Parameter Required'}
         
         predictor = Predictor()
-        return predictor.team_data[predictor.team_data['Team'] == team].to_json()
+        return predictor.team_data[predictor.team_data['Team'] == team].to_json(orient="records")
     
 class TeamsData(Resource):
     def get(self):
         
         predictor = Predictor()
-        return predictor.team_data.to_json()
+        return predictor.team_data.to_json(orient="records")
 
 
 class PredictorMatchup(Resource):

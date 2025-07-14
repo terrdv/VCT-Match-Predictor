@@ -1,0 +1,18 @@
+.team-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+}
+
+.pick {
+    display: flex;
+    width: 200px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-around;
+}
+.button_icon {
+    height: 40px;
+    width: auto;
+}

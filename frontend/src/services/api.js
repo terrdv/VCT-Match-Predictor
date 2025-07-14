@@ -18,12 +18,14 @@ export const getMatchupData = async(team1, team2) => {
 export const getTeams = async() => {
     const response = await fetch(`${BASE_URL}/teams`)
     const data = await response.json()
-    return data.results
+    const parsed = JSON.parse(data)
+    return parsed
 }
 
 
 export const getTeamData = async(team) => {
     const response = await fetch(`${BASE_URL}/info/${team}`)
     const data = await response.json()
-    return data.results
+    const parsed = JSON.parse(data)
+    return parsed
 }
