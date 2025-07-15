@@ -20,10 +20,26 @@ function About() {
                      Valorant Champion Tour 2021-2025 Data by Ryan Luong
                     </a> 
                     <br></br>
+                    <br/>
+                    Prediction Accuracy: 80%
+                    <br></br>
                     <br></br>
                     Data last updated: 2025/07/14
                 </p>
+                
             </div>
+            <br></br>
+            <h2>Past Predictions</h2>
+            <div className="preds">
+                <p>Valorant Masters Toronto 2025 June 17th: Gen.G vs G2 ✅</p>
+                <p>Valorant Masters Toronto 2025 June 17th: Sentinels vs Fnatic ✅</p>
+                <p>Valorant Masters Toronto 2025 June 20th: Paper Rex vs Wolves ✅</p>
+                <p>Valorant Masters Toronto 2025 June 20th: G2 vs Fnatic ❌</p>
+                <p>Valorant Masters Toronto 2025 June 21st: Wolves vs Fnatic ✅</p>
+                <p>Valorant Masters Toronto 2025 June 22nd: Paper Rex vs Fnatic ✅</p>
+            </div>
+            
+
         </div>
     </div>
     )
