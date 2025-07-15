@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 12rem;
+    overflow: hidden;
 }
 
 .pick {

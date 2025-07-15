@@ -12,6 +12,7 @@ function Home() {
     const [loading, setLoading] = useState(true)
     const [predict, setPredict] = useState(false)
     const [matchResult, setResult] = useState(null)
+    const [predictionLoading, setPredictionLoading] = useState(false)
 
     useEffect(() => {
         const loadTeams = async() => {
@@ -51,9 +52,18 @@ function Home() {
         });
     };
 
-    const handlePredict = () => {
-        setPredict(true)
-        setResult(getPrediction(match[0], match[1]))
+    const handlePredict = async () => {
+        setPredictionLoading(true)
+        try {
+            const result = await getPrediction(match[0], match[1])
+            setResult(result)
+            setPredict(true)
+        } catch (err) {
+            console.error('Prediction failed:', err)
+            setError('Failed to get prediction')
+        } finally {
+            setPredictionLoading(false)
+        }
     }
 
     const handleReset = () => {
@@ -84,7 +94,12 @@ function Home() {
                     <Matchup team1={match[0]} team2={match[1]} />
                     <div className="buttons">
                         <button onClick={clearMatch}>Clear Match</button>
-                        <button disabled={!match[0] || !match[1]} onClick={handlePredict}>Predict</button>
+                        <button 
+                            disabled={!match[0] || !match[1] || predictionLoading} 
+                            onClick={handlePredict}
+                        >
+                            {predictionLoading ? 'Predicting...' : 'Predict'}
+                        </button>
                     </div>
                 </div>
 
