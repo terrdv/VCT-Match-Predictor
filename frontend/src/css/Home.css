@@ -37,3 +37,8 @@ p {
     border-radius: 2%;
     
 }
+
+.buttons button {
+    margin: 10px;
+}
+

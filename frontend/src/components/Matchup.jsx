@@ -1,39 +1,35 @@
+import TeamCard from '../components/TeamCard'
+import '../css/Matchup.css'
 
-
-function Matchup(team1, team2) {
+function Matchup({team1, team2}) {
 
     if (isNaN(team1)) {
         return (
-            <div>
-                <div>
-                    <p>Select Team</p>
+            <div className="matchup">
+                <div className="team-slot">
+                    {team1 ? (
+                        <TeamCard team={team1} />
+                    ) : (
+                        <div className="select-team-placeholder">
+                            <p>Select Team 1</p>
+                        </div>
+                    )}
+
                 </div>
-                <div>
-                    <p>Select Team</p>
+                <div className="vs">
+                    <span>VS</span>
                 </div>
-            </div>    
-        )
-    } else if (isNaN(team1) && isNaN(team2)) {
-        return (
-            <div>
-                <div>
-                    <p>{team1}</p>
-                </div>
-                <div>
-                    <p>Select Team</p>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <div>
-                    <p>{team1}</p>
-                </div>
-                <div>
-                    <p>{team2}</p>
+                <div className="team-slot">
+                    {team2 ? (
+                        <TeamCard team={team2} />
+                    ) : (
+                        <div className="select-team-placeholder">
+                            <p>Select Team 2</p>
+                        </div>
+                    )}
                 </div>
             </div>
+            
         )
     }
 }

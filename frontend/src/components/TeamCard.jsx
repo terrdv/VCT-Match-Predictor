@@ -1,11 +1,11 @@
-
+import '../css/TeamCard.css'
 
 
 function TeamCard({team}) {
 
     return (
-        <div class="card">
-            <img></img>
+        <div className="card">
+            <img src={`http://localhost:5000${team["Image Path"]}`}></img>
             <h2>{team["Team"]}</h2>
         </div>
     )

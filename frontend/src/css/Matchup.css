@@ -1,0 +1,45 @@
+/* In your main CSS file */
+.matchup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.team-slot {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.vs{
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    padding: 0 20px;
+}
+
+.select-team-placeholder {
+    border: 2px dashed #ccc;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    color: #666;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(68, 68, 68, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.team-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
