@@ -202,10 +202,19 @@
     .teams-comparison {
         flex-direction: column;
         gap: 16px;
+        align-items: center;
+    }
+    
+    .team-result:first-child {
+        order: 1;
     }
     
     .vs-section {
         order: 2;
+    }
+    
+    .team-result:last-child {
+        order: 3;
     }
     
     .team-logo {
