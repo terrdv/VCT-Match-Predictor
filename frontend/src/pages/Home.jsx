@@ -4,6 +4,8 @@ import { getPrediction, getMatchupData , getTeamData, getTeams} from '../service
 import Matchup from '../components/Matchup'
 import TeamButton from '../components/TeamButton'
 import Prediction from '../components/Prediction'
+import TeamStatsDashboard from '../components/TeamDashboard'
+
 
 function Home() {
     const [match, setMatch] = useState([null, null])
@@ -13,6 +15,7 @@ function Home() {
     const [predict, setPredict] = useState(false)
     const [matchResult, setResult] = useState(null)
     const [predictionLoading, setPredictionLoading] = useState(false)
+    const [matchupData, setMatchupData] = useState(null)
 
     useEffect(() => {
         const loadTeams = async() => {
@@ -54,16 +57,18 @@ function Home() {
 
     const handlePredict = async () => {
         setPredictionLoading(true)
-        try {
-            const result = await getPrediction(match[0], match[1])
-            setResult(result)
-            setPredict(true)
-        } catch (err) {
-            console.error('Prediction failed:', err)
-            setError('Failed to get prediction')
-        } finally {
-            setPredictionLoading(false)
-        }
+            try {
+                const result = await getPrediction(match[0], match[1])
+                const matchup = await getMatchupData(match[0], match[1])  // <- fetch matchup data
+                setResult(result)
+                setMatchupData(matchup)  // <- store it
+                setPredict(true)
+            } catch (err) {
+                console.error('Prediction failed:', err)
+                setError('Failed to get prediction')
+            } finally {
+                setPredictionLoading(false)
+            }
     }
 
     const handleReset = () => {
@@ -81,9 +86,12 @@ function Home() {
     
 
     return predict ? (
+            <>
+                <Prediction team1={match[0]} team2={match[1]} result={matchResult} onReset={handleReset} />
+                <TeamStatsDashboard team1={match[0]} team2={match[1]} matchupData={matchupData}/>
+            </>
             
-            <Prediction team1={match[0]} team2={match[1]} result={matchResult} onReset={handleReset} />
-        
+
             
            
         ) : (

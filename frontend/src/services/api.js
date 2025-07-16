@@ -10,7 +10,7 @@ export const getPrediction = async(team1, team2) => {
 
 
 export const getMatchupData = async(team1, team2) => {
-    const result = await fetch(`${BASE_URL}/predict/${encodeURIComponent(team1["Team"])}/${encodeURIComponent(team2["Team"])}`)
+    const result = await fetch(`${BASE_URL}/matchup_data/${encodeURIComponent(team1["Team"])}/${encodeURIComponent(team2["Team"])}`)
     if (!result.ok) throw new Error('Prediction failed');
     return await result.json()
 }
