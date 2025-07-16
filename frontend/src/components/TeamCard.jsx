@@ -5,7 +5,7 @@ function TeamCard({team}) {
 
     return (
         <div className="card">
-            <img src={`http://localhost:5000${team["Image Path"]}`}></img>
+            <img src={`https://vct-match-predictor-api.onrender.com/${team["Image Path"]}`}></img>
             <h2>{team["Team"]}</h2>
         </div>
     )
