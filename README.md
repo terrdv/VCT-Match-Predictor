@@ -4,7 +4,7 @@ The **VCT Outcome Predictor** is a full-stack web application that predicts matc
 
 ## 🌐 Live Demo
 
-🔗 [https://main.dxzmyy40dxhqi.amplifyapp.com/]()
+🔗 [https://main.dxzmyy40dxhqi.amplifyapp.com/]() (coming soon)
 
 ## 📦 Tech Stack
 
