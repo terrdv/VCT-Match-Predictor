@@ -30,7 +30,7 @@ The **VCT Outcome Predictor** is a full-stack web application that predicts matc
 
 ---
 
-## 🛠️ Getting Started
+## 🛠️ Getting Started (Git Bash Terminal)
 
 ### 1. Clone the Repository
 
