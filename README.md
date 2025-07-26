@@ -30,31 +30,7 @@ The **VCT Outcome Predictor** is a full-stack web application that predicts matc
 
 ---
 
-## 🛠️ Getting Started (Git Bash Terminal)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/VCT-Outcome-Predictor-Website.git
-cd VCT-Outcome-Predictor-Website
-```
-
-### 2. Set-up backend
-```
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements
-python app.py
-```
-
-### 3. Install and run frontend
-
-```
-cd frontend
-npm install
-npm run dev
-```
+=
 
 
 
