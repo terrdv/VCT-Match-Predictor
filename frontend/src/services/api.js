@@ -1,4 +1,4 @@
-const BASE_URL = "https://vct-match-predictor-api.onrender.com/api"
+const BASE_URL = "http://127.0.0.1:5000/api"
 
 
 export const getPrediction = async(team1, team2) => {

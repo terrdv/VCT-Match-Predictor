@@ -30,7 +30,6 @@ The **VCT Outcome Predictor** is a full-stack web application that predicts matc
 
 ---
 
-=
 
 
 

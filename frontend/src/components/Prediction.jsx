@@ -18,7 +18,7 @@ function Prediction({ team1, team2, result, onReset }) {
                 <div className="teams-comparison">
                     <div className={`team-result ${result.team1_win_prediction ? 'winner' : 'loser'}`}>
                         <img 
-                            src={`https://vct-match-predictor-api.onrender.com${team1["Image Path"]}`} 
+                            src={`http://127.0.0.1:5000${team1["Image Path"]}`} 
                             alt={team1["Team"]}
                             className="team-logo"
                         />
@@ -35,7 +35,7 @@ function Prediction({ team1, team2, result, onReset }) {
                     
                     <div className={`team-result ${!result.team1_win_prediction ? 'winner' : 'loser'}`}>
                         <img 
-                            src={`https://vct-match-predictor-api.onrender.com${team2["Image Path"]}`} 
+                            src={`http://127.0.0.1:5000${team2["Image Path"]}`} 
                             alt={team2["Team"]}
                             className="team-logo"
                         />

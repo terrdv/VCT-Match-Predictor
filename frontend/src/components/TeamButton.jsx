@@ -13,7 +13,7 @@ function TeamButton({ team, onTeamSelect, isSelected }) {
                 className={`pick ${isSelected ? 'selected' : ''}`}
                 onClick={handleClick}
             >
-                <img className="button_icon" src={`https://vct-match-predictor-api.onrender.com/${team["Image Path"]}`} alt={team["Team"]} />
+                <img className="button_icon" src={`http://127.0.0.1:5000/${team["Image Path"]}`} alt={team["Team"]} />
                 {team["Team"]}
             </button>
         </div>
