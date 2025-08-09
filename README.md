@@ -30,6 +30,24 @@ The **VCT Outcome Predictor** is a full-stack web application that predicts matc
 
 ---
 
+## Setup:
+
+1. Clone the repository
+2. cd VCT-Outcome-Predictor-Website
+
+#Setup Backend
+
+1. cd backend
+2. pip install -r requirements.txt
+3. python app.py
+
+#Setup Frontend
+
+1. cd ..
+2. cd frontend
+3. npm install
+4. npm run dev
+
 
 
 
