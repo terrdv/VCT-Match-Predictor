@@ -1,8 +1,8 @@
-# VCT Outcome Predictor Website
+# VALORANT Champions Tour (VCT) Match Predictor
 
-The **VCT Outcome Predictor** is a full-stack web application that predicts match outcomes for the Valorant Champions Tour (VCT). It combines machine learning, a Flask API backend, and a modern React frontend to deliver live predictions based on historical performance data and team metrics.
+**VCT Match Predictor** is a full-stack web application that predicts match outcomes for the Valorant Champions Tour (VCT). It combines machine learning, a Flask API backend, and a modern React frontend to deliver predictions based on historical performance data and team metrics.
 
-## 📦 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React**
