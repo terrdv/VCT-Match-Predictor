@@ -6,7 +6,6 @@
 
 ### Frontend
 - **React**
-- **Recharts** (for visualization)
 - **Vite**
 
 ### Backend
@@ -16,13 +15,13 @@
 
 ---
 
-## 🚀 Features
+## Features
 
-- 📊 Predicts VCT match winners based on team statistics
-- 🔍 Clean UI with dynamic charts and probability displays
-- 🌐 RESTful API serving prediction results
-- 🧠 Machine learning model (e.g. Random Forest Classifier)
-- 🔐 Deployment with proper environment & security configs
+- Predicts VCT match winners based on team statistics
+- Clean UI with dynamic charts and probability displays
+- RESTful API serving prediction results
+- Machine learning model (e.g. Random Forest Classifier)
+- Deployment with proper environment & security configs
 
 ---
 
