@@ -24,9 +24,8 @@ Predict the outcome of official VCT matches using ML.
 
 ---
 
-## Setup:
-
-# Clone the repository
+## Setup
+```bash
 git clone <repository-url>
 cd VCT-Outcome-Predictor-Website
 
@@ -39,6 +38,7 @@ python app.py &
 cd ../frontend
 npm install
 npm run dev
+```
 
 
 
