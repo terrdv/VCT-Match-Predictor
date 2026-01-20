@@ -30,13 +30,13 @@
 1. Clone the repository
 2. cd VCT-Outcome-Predictor-Website
 
-#Setup Backend
+**Setup Backend**
 
 1. cd backend
 2. pip install -r requirements.txt
 3. python app.py
 
-#Setup Frontend
+**Setup Frontend**
 
 1. cd ..
 2. cd frontend
