@@ -32,7 +32,7 @@ cd VCT-Outcome-Predictor-Website
 # Backend setup
 cd backend
 pip install -r requirements.txt
-python app.py &
+python app.py 
 
 # Frontend setup
 cd ../frontend
