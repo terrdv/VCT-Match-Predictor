@@ -2,15 +2,15 @@ const BASE_URL = "http://127.0.0.1:5000/api"
 
 
 export const getPrediction = async(team1, team2) => {
-    console.log(`${BASE_URL}/predict/${team1["Team"]}/${team2["Team"]}`)
-    const result = await fetch(`${BASE_URL}/predict/${encodeURIComponent(team1["Team"])}/${encodeURIComponent(team2["Team"])}`)
+    console.log(`${BASE_URL}/predict/${team1}/${team2}`)
+    const result = await fetch(`${BASE_URL}/predict/${encodeURIComponent(team1)}/${encodeURIComponent(team2)}`)
     if (!result.ok) throw new Error('Prediction failed');
     return await result.json()
 }
 
 
 export const getMatchupData = async(team1, team2) => {
-    const result = await fetch(`${BASE_URL}/matchup_data/${encodeURIComponent(team1["Team"])}/${encodeURIComponent(team2["Team"])}`)
+    const result = await fetch(`${BASE_URL}/matchup_data/${encodeURIComponent(team1)}/${encodeURIComponent(team2)}`)
     if (!result.ok) throw new Error('Prediction failed');
     return await result.json()
 }

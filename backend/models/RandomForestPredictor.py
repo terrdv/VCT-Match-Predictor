@@ -1,35 +1,13 @@
-from flask import Flask, request
-from flask_restful import Resource, Api, abort
 import joblib
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
-from flask_cors import CORS
 
-app = Flask(__name__, static_url_path='/static', static_folder='static')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///teamsdb.db'
-CORS(app)
-api = Api(app)
-
-import time
-from flask import g
-
-@app.before_request
-def start_timer():
-    g.start_time = time.perf_counter()
-
-@app.after_request
-def add_latency_header(response):
-    latency = time.perf_counter() - g.start_time
-    response.headers["X-Response-Time"] = f"{latency:.4f}s"
-    return response
-
-
-class Predictor:
+class RandomForestPredictor:
     def __init__(self):
-        self.lr_model = joblib.load('models/logistic_regression_model.pkl')
-        self.rf_model = joblib.load('models/rf_augmented_model.pkl')
-        self.scaler = joblib.load('models/scaler.pkl')
+        self.lr_model = joblib.load('ml_models/logistic_regression_model.pkl')
+        self.rf_model = joblib.load('ml_models/rf_augmented_model.pkl')
+        self.scaler = joblib.load('ml_models/scaler.pkl')
         self.team_data = pd.read_csv('csv/team_data.csv')
         self.match_data = pd.read_csv('csv/scores.csv')
         self.feature_cols = [
@@ -117,67 +95,7 @@ class Predictor:
         # Test both team orders
         df_ab = self.build_pred_df(teama, teamb)
         
-        rf = joblib.load('models/rf.pkl')
+        rf = joblib.load('ml_models/rf.pkl')
         
         prob_a_wins_ab = rf.predict_proba(df_ab)[0][1]
         return 1 if prob_a_wins_ab>= threshold else 0
-
-
-class TeamData(Resource):
-    def get(self, team):
-        if not team:
-            return {'error': 'Query Parameter Required'}
-        
-        predictor = Predictor()
-        return predictor.team_data[predictor.team_data['Team'] == team].to_json(orient="records")
-    
-class TeamsData(Resource):
-    def get(self):
-        
-        predictor = Predictor()
-        return predictor.team_data.to_json(orient="records")
-
-
-class PredictorMatchup(Resource):
-    def get(self, team1, team2):
-        predictor = Predictor()
-        if not team1 or not team2:
-            return {'error': 'Both team1 and team2 query parameters are required'}, 400
-
-        try:
-            prediction = predictor.prediction_probability(team1, team2)
-            return {
-                'team1': team1,
-                'team2': team2,
-                'team1_win_prediction': bool(prediction)
-            }, 200
-        except ValueError as e:
-            return {'error': str(e)}, 400
-        except Exception as e:
-            return {'error': f'Prediction failed: {str(e)}'}, 500
-
-class MatchupData(Resource):
-    def get(self, team1, team2):
-        predictor = Predictor()
-
-        if not team1 or not team2:
-            return {'error': 'Both team1 and team2 query parameters are required'}, 400
-        
-        data = predictor.build_pred_df(team1, team2)
-
-        return data.to_json(orient="records")
-
-api.add_resource(TeamData, '/api/info/<team>')
-api.add_resource(TeamsData, '/api/teams')
-api.add_resource(PredictorMatchup, '/api/predict/<team1>/<team2>')
-api.add_resource(MatchupData, '/api/matchup_data/<team1>/<team2>')
-
-
-@app.route('/')
-def home():
-    return '<div></div>'
-
-
-if __name__ == '__main__':
-    
-    app.run(debug=True)

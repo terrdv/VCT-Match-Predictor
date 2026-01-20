@@ -3,6 +3,7 @@ import requests
 import statistics
 import math
 import random
+import pandas as pd
 
 class LatencyBenchmark:
 
@@ -11,20 +12,12 @@ class LatencyBenchmark:
         self.BASE_URL = "http://127.0.0.1:5000/api/"
 
         self.N_REQUESTS = 100
-        self.TEAMS = [
-            "Paper Rex", "Bilibili Gaming", "Team Liquid", "Sentinels",
-            "Wolves Esports", "Gen.G", "MIBR", "G2 Esports", "Team Heretics",
-            "Xi Lai Gaming", "Rex Regum Qeon", "FNATIC", "Team Vitality",
-            "GIANTX", "BBL Esports", "Karmine Corp", "Apeks",
-            "FUT Esports", "KOI", "Natus Vincere", "Gentle Mates",
-            "DetonatioN FocusMe", "Global Esports", "T1", "ZETA DIVISION",
-            "DRX", "TALON", "Team Secret", "BOOM Esports",
-            "Nongshim RedForce", "Trace Esports", "All Gamers",
-            "Dragon Ranger", "NOVA Esports", "TYLOO", "Edward Gaming",
-            "JD Gaming", "FunPlus Phoenix", "Titan Esports Club",
-            "NRG", "KRÜ Esports", "LOUD", "FURIA", "LEVIATÁN",
-            "ZETA Game Esports", "Evil Geniuses"
-        ]
+        self.TEAMS = (
+            pd.read_csv("../csv/team_data.csv")["Team"]
+            .dropna()
+            .unique()
+            .tolist()
+        )
 
 
     def makeRequests(self, endpoint):
@@ -53,19 +46,30 @@ class LatencyBenchmark:
 
     def benchmarkGetTeamRequest(self):
         t1 = random.choice(self.TEAMS)
-        latencies = self.makeRequests(f"team/{t1}")
+        latencies = self.makeRequests(f"info/{t1}")
         self.printResults(latencies)
 
     def benchmarkGetTeamsData(self):
         t1 = random.choice(self.TEAMS)
         t2 = random.choice(self.TEAMS)
-        latencies = self.makeRequests(f"team/matchup_data/{t1}/{t2}")
+        latencies = self.makeRequests(f"matchup_data/{t1}/{t2}")
         self.printResults(latencies)
 
     def benchmarkPredict(self):
         t1 = random.choice(self.TEAMS)
         t2 = random.choice(self.TEAMS)
-        latencies = self.makeRequests(f"team/predict/{t1}/{t2}")
+        latencies = self.makeRequests(f"predict/{t1}/{t2}")
         self.printResults(latencies)
+
+
+if __name__ == "__main__":
+    benchmark = LatencyBenchmark()
+
+    print("Benchmarking Get Team Request:")
+    benchmark.benchmarkGetTeamRequest()
+    print("\nBenchmarking Get Teams Data Request:")
+    benchmark.benchmarkGetTeamsData()
+    print("\nBenchmarking Predict Request:")
+    benchmark.benchmarkPredict()
 
 

@@ -1,5 +1,5 @@
 import '../css/Home.css'
-import {useState, useEffect} from "react"
+import {useState, useEffect, useNavigate} from "react"
 import { getPrediction, getMatchupData , getTeamData, getTeams} from '../services/api'
 import Matchup from '../components/Matchup'
 import TeamButton from '../components/TeamButton'

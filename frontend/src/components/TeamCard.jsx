@@ -2,7 +2,7 @@ import '../css/TeamCard.css'
 
 
 function TeamCard({team}) {
-
+    
     return (
         <div className="card">
             <img src={`http://127.0.0.1:5000/${team["Image Path"]}`}></img>
