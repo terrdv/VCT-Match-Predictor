@@ -26,21 +26,20 @@ Predict the outcome of official VCT matches using ML.
 
 ## Setup:
 
-1. Clone the repository
-2. cd VCT-Outcome-Predictor-Website
+# Clone the repository
+git clone <repository-url>
+cd VCT-Outcome-Predictor-Website
 
-**Setup Backend**
+# Backend setup
+cd backend
+pip install -r requirements.txt
+python app.py &
 
-1. cd backend
-2. pip install -r requirements.txt
-3. python app.py
+# Frontend setup
+cd ../frontend
+npm install
+npm run dev
 
-**Setup Frontend**
-
-1. cd ..
-2. cd frontend
-3. npm install
-4. npm run dev
 
 
 
