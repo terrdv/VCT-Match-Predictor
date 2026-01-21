@@ -1,10 +1,6 @@
 from flask import Flask, request
-from flask_restful import Resource, Api, abort
-import joblib
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler
+from flask_restful import Resource, Api
 from models.RandomForestPredictor import RandomForestPredictor as Predictor
-import pandas as pd
 from flask_cors import CORS
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
