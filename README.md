@@ -1,6 +1,6 @@
 # VALORANT Champions Tour (VCT) Match Predictor
 
-**VCT Match Predictor** is a full-stack web application that predicts match outcomes for the Valorant Champions Tour (VCT). It combines machine learning, a Flask API backend, and a modern React frontend to deliver predictions based on historical performance data and team metrics.
+Predict the outcome of official VCT matches using ML.
 
 ## Tech Stack
 
@@ -11,7 +11,6 @@
 ### Backend
 - **Flask (Python)**
 - **Pandas + Scikit-learn**
-- **CSV-based storage**
 
 ---
 
@@ -25,23 +24,22 @@
 
 ---
 
-## Setup:
+## Setup
+```bash
+git clone <repository-url>
+cd VCT-Outcome-Predictor-Website
 
-1. Clone the repository
-2. cd VCT-Outcome-Predictor-Website
+# Backend setup
+cd backend
+pip install -r requirements.txt
+python app.py 
 
-**Setup Backend**
+# Frontend setup
+cd ../frontend
+npm install
+npm run dev
+```
 
-1. cd backend
-2. pip install -r requirements.txt
-3. python app.py
-
-**Setup Frontend**
-
-1. cd ..
-2. cd frontend
-3. npm install
-4. npm run dev
 
 
 
