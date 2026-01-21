@@ -5,11 +5,9 @@ import pandas as pd
 
 class RandomForestPredictor:
     def __init__(self):
-        self.lr_model = joblib.load('ml_models/logistic_regression_model.pkl')
-        self.rf_model = joblib.load('ml_models/rf_augmented_model.pkl')
-        self.scaler = joblib.load('ml_models/scaler.pkl')
-        self.team_data = pd.read_csv('csv/team_data.csv')
-        self.match_data = pd.read_csv('csv/scores.csv')
+        self.rf_model = joblib.load('./rf.pkl')
+        self.team_data = pd.read_csv('../csv/team_data.csv')
+        self.match_data = pd.read_csv('../csv/scores.csv')
         self.feature_cols = [
         'Team A Winrate vs B', 'Team A Winrate', 'Team A K/D Ratio', 'Team A Average Damage',
         'Team A Average Combat Score', 'Team A Average First Kills', 'Team A Average First Deaths Per Round',
@@ -95,7 +93,5 @@ class RandomForestPredictor:
         # Test both team orders
         df_ab = self.build_pred_df(teama, teamb)
         
-        rf = joblib.load('ml_models/rf.pkl')
-        
-        prob_a_wins_ab = rf.predict_proba(df_ab)[0][1]
+        prob_a_wins_ab = self.rf_model.predict_proba(df_ab)[0][1]
         return 1 if prob_a_wins_ab>= threshold else 0
