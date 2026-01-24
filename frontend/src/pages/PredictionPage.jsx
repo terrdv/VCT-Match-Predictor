@@ -1,51 +1,56 @@
-import {useState, useEffect, use} from 'react'
-import {getPrediction, getMatchupData , getTeamData} from '../services/api'
-import {useParams} from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { getTeamData, getPrediction } from '../services/api'
 import Matchup from '../components/Matchup'
 import Prediction from '../components/Prediction'
-import TeamStatsDashboard from '../components/TeamDashboard'
 import '../css/Home.css'
 
 function PredictionPage() {
+    const { team1, team2 } = useParams()
 
     const [loading, setLoading] = useState(true)
-    const {team1, team2} = useParams()
-    const [matchResult, setMatchResult] = useState(null)
-    const [matchupData, setMatchupData] = useState(null)
-    const [predicted, setPredicted] = useState(false)
-
-
-    
-
+    const [team1Data, setTeam1Data] = useState(null)
+    const [team2Data, setTeam2Data] = useState(null)
+    const [predictionResult, setPredictionResult] = useState(null)
 
     useEffect(() => {
-        const fetchPrediction = async () => {
+        const fetchData = async () => {
             try {
-                const prediction = await getPrediction(team1, team2)
-                const data = await getMatchupData(team1, team2)
-                setMatchupData(data)
-                setMatchResult(prediction)
-                setPredicted(true)
+            const prediction = await getPrediction(team1, team2)
+            console.log(prediction)
+            setPredictionResult(prediction)
+            console.log("Fetching team 1")
+            const t1 = await getTeamData(team1)
+            console.log("Team 1 done")
+
+            console.log("Fetching team 2")
+            const t2 = await getTeamData(team2)
+            console.log("Team 2 done")
+
+            setTeam1Data(t1[0])
+            setTeam2Data(t2[0])
+
+
+            console.log("Prediction done")
+
             } catch (err) {
-                console.log(err)
+                console.error(err)
             } finally {
                 setLoading(false)
             }
         }
 
-        fetchPrediction()
+        fetchData()
     }, [])
 
 
-    
-    return loading ? (<p>Loading...</p>) : (
-    predicted ? (
+    if (loading) return <p>Loading...</p>
+
+    return (
         <div className="prediction-page">
-            <Matchup team1={team1} team2={team2} matchupData={matchupData} />
-            <Prediction matchResult={matchResult} team1={team1} team2={team2} />
+            <Matchup team1={team1Data} team2={team2Data} />
+            <Prediction result={predictionResult} team1={team1Data} team2={team2Data} />
         </div>
-    ) : (<p>hi</p>)
-    
     )
 }
 

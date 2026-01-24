@@ -1,5 +1,6 @@
 import '../css/Home.css'
-import { useState, useEffect, useNavigate } from "react"
+import { useState, useEffect} from "react"
+import { useNavigate } from 'react-router-dom'
 import { getTeams } from '../services/api'
 import Matchup from '../components/Matchup'
 import '../css/Dropdowns.css'
@@ -11,6 +12,7 @@ function MakePrediction() {
     // Use empty string instead of null so <select> resets correctly
     const [team1, setTeam1] = useState("")
     const [team2, setTeam2] = useState("")
+    const navigate = useNavigate()
 
     useEffect(() => {
         const loadTeams = async () => {
@@ -29,6 +31,11 @@ function MakePrediction() {
     const clearMatch = () => {
         setTeam1("")
         setTeam2("")
+    }
+
+    const handlePredict = () => {
+        // Navigate to prediction page
+        navigate('/predict/' + teams[team1].Team + '/' + teams[team2].Team)
     }
 
     return (
@@ -84,7 +91,7 @@ function MakePrediction() {
 
                 <button 
                     disabled={team1 === "" || team2 === ""}
-                    onClick={() => console.log("Predict pressed")}
+                    onClick={handlePredict}
                 >
                     Predict
                 </button>
