@@ -4,11 +4,12 @@ import { getTeamData, getPrediction } from '../services/api'
 import Matchup from '../components/Matchup'
 import Prediction from '../components/Prediction'
 import '../css/PredictionPage.css'
+import { useNavigate } from 'react-router-dom'
 
 
 function PredictionPage() {
     const { team1, team2 } = useParams()
-
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
     const [team1Data, setTeam1Data] = useState(null)
     const [team2Data, setTeam2Data] = useState(null)
@@ -17,6 +18,11 @@ function PredictionPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+            if (!team1 || !team2 || team1 === team2) {
+                alert("Please select two different teams")
+                navigate('/')
+                return
+            }
             const prediction = await getPrediction(team1, team2)
             console.log(prediction)
             setPredictionResult(prediction)
@@ -51,6 +57,7 @@ function PredictionPage() {
         <div className="prediction-page">
             <Matchup team1={team1Data} team2={team2Data} />
             <Prediction result={predictionResult} team1={team1Data} team2={team2Data} />
+            <button onClick={() => navigate('/')}>Make Another Prediction</button>
         </div>
     )
 }

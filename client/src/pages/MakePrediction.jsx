@@ -38,6 +38,24 @@ function MakePrediction() {
         navigate('/predict/' + teams[team1].Team + '/' + teams[team2].Team)
     }
 
+    const handleTeam1Change = (e) => {
+        const selectedIndex = e.target.value
+        // If the selected team is the same as team2, clear team2
+        if (selectedIndex === team2) {
+            setTeam2("")
+        }
+        setTeam1(selectedIndex)
+    }
+
+    const handleTeam2Change = (e) => {
+        const selectedIndex = e.target.value
+        // If the selected team is the same as team1, clear team1
+        if (selectedIndex === team1) {
+            setTeam1("")
+        }
+        setTeam2(selectedIndex)
+    }
+
     return (
         <div className="home">
             <div className="text-content">
@@ -59,28 +77,36 @@ function MakePrediction() {
                     <select 
                         id="team1" 
                         value={team1} 
-                        onChange={(e) => setTeam1(e.target.value)}
+                        onChange={handleTeam1Change}
                     >
                         <option value="">Select Team 1</option>
-                        {teams.map((team, index) => (
-                            <option key={team.id} value={index}>
-                                {team.Team}
-                            </option>
-                        ))}
+                        {teams.map((team, index) => {
+                            // Exclude team2 from team1 dropdown
+                            if (index.toString() === team2) return null
+                            return (
+                                <option key={team.id} value={index}>
+                                    {team.Team}
+                                </option>
+                            )
+                        })}
                     </select>
 
                     {/* TEAM 2 */}
                     <select 
                         id="team2" 
                         value={team2} 
-                        onChange={(e) => setTeam2(e.target.value)}
+                        onChange={handleTeam2Change}
                     >
                         <option value="">Select Team 2</option>
-                        {teams.map((team, index) => (
-                            <option key={team.id} value={index}>
-                                {team.Team}
-                            </option>
-                        ))}
+                        {teams.map((team, index) => {
+                            // Exclude team1 from team2 dropdown
+                            if (index.toString() === team1) return null
+                            return (
+                                <option key={team.id} value={index}>
+                                    {team.Team}
+                                </option>
+                            )
+                        })}
                     </select>
                 </div>
             )}
