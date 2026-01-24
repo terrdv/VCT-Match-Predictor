@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom'
 import { getTeamData, getPrediction } from '../services/api'
 import Matchup from '../components/Matchup'
 import Prediction from '../components/Prediction'
-import '../css/Home.css'
+import '../css/PredictionPage.css'
+
 
 function PredictionPage() {
     const { team1, team2 } = useParams()
