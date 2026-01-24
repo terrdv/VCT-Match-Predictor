@@ -30,12 +30,12 @@ git clone <repository-url>
 cd VCT-Outcome-Predictor-Website
 
 # Backend setup
-cd backend
+cd server
 pip install -r requirements.txt
 python app.py 
 
 # Frontend setup in second terminal
-cd frontend
+cd client
 npm install
 npm run dev
 ```
