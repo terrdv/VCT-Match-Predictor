@@ -34,8 +34,8 @@ cd backend
 pip install -r requirements.txt
 python app.py 
 
-# Frontend setup
-cd ../frontend
+# Frontend setup in second terminal
+cd frontend
 npm install
 npm run dev
 ```

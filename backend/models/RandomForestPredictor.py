@@ -2,12 +2,18 @@ import joblib
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+
 
 class RandomForestPredictor:
     def __init__(self):
-        self.rf_model = joblib.load('./rf.pkl')
-        self.team_data = pd.read_csv('../csv/team_data.csv')
-        self.match_data = pd.read_csv('../csv/scores.csv')
+        self.rf_model = joblib.load(os.path.join(BASE_DIR, 'rf.pkl'))
+        self.team_data = pd.read_csv(os.path.join(BASE_DIR, '../csv/team_data.csv'))
+        self.match_data = pd.read_csv(os.path.join(BASE_DIR, '../csv/scores.csv'))
         self.feature_cols = [
         'Team A Winrate vs B', 'Team A Winrate', 'Team A K/D Ratio', 'Team A Average Damage',
         'Team A Average Combat Score', 'Team A Average First Kills', 'Team A Average First Deaths Per Round',
