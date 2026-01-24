@@ -7,25 +7,26 @@ app = Flask(__name__, static_url_path='/static', static_folder='static')
 CORS(app)
 api = Api(app)
 
+predictor = Predictor()
 
 class TeamData(Resource):
     def get(self, team):
         if not team:
             return {'error': 'Query Parameter Required'}
         
-        predictor = Predictor()
+
         return predictor.team_data[predictor.team_data['Team'] == team].to_json(orient="records")
     
 class TeamsData(Resource):
     def get(self):
         
-        predictor = Predictor()
+
         return predictor.team_data.to_json(orient="records")
 
 
 class PredictorMatchup(Resource):
     def get(self, team1, team2):
-        predictor = Predictor()
+
         if not team1 or not team2:
             return {'error': 'Both team1 and team2 query parameters are required'}, 400
 
@@ -43,11 +44,10 @@ class PredictorMatchup(Resource):
 
 class MatchupData(Resource):
     def get(self, team1, team2):
-        predictor = Predictor()
 
         if not team1 or not team2:
             return {'error': 'Both team1 and team2 query parameters are required'}, 400
-        
+
         data = predictor.build_pred_df(team1, team2)
 
         return data.to_json(orient="records")
@@ -64,5 +64,4 @@ def home():
 
 
 if __name__ == '__main__':
-    
     app.run(debug=True)
