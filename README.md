@@ -10,7 +10,6 @@ Predict the outcome of official VCT matches using ML.
 
 ### Backend
 - **Flask (Python)**
-- **Pandas + Scikit-learn**
 
 ---
 
