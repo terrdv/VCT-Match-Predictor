@@ -57,7 +57,7 @@ function MakePrediction() {
     }
 
     return (
-        <div className="home">
+        <div className="home make-prediction">
             <div className="text-content">
                 <h1>VCT Match Predictor</h1>
                 <p>Predict the outcome of VCT matches using machine learning</p>

@@ -1,6 +1,4 @@
-/* ============================================
-   Prediction Page
-   ============================================ */
+/* Prediction page */
 .prediction-page {
   display: flex;
   flex-direction: column;
@@ -14,36 +12,11 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Loading State */
-.prediction-page p {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  text-align: center;
-  padding: var(--spacing-2xl);
-}
+.prediction-page p { font-size: var(--font-size-lg); color: var(--color-text-secondary); text-align: center; padding: var(--spacing-2xl); }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .prediction-page {
-    gap: var(--spacing-xl);
-    padding: var(--spacing-lg) var(--spacing-md);
-  }
-}
-
-@media (max-width: 480px) {
-  .prediction-page {
-    gap: var(--spacing-lg);
-    padding: var(--spacing-md) var(--spacing-sm);
-  }
-}
-
+@media (max-width: 768px) { .prediction-page { gap: var(--spacing-xl); padding: var(--spacing-lg) var(--spacing-md); } }
+@media (max-width: 480px) { .prediction-page { gap: var(--spacing-lg); padding: var(--spacing-md) var(--spacing-sm); } }

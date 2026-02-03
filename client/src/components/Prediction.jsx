@@ -12,7 +12,7 @@ function Prediction({ team1, team2, result }) {
       </div>
 
       <div className="prediction-content">
-        <div className="teams-comparison">
+        <div className="teams-comparison glass">
           <div className={`team-result ${result.team1_win_prediction ? 'winner' : 'loser'}`}>
             <img
               src={`http://127.0.0.1:5000${team1["Image Path"]}`}
@@ -41,7 +41,7 @@ function Prediction({ team1, team2, result }) {
           </div>
         </div>
 
-        <div className="prediction-result">
+        <div className="prediction-result glass">
           <div className="winner-announcement">
             <span className="predicted-text">Predicted Winner:</span>
             <span className="winner-name">{winner["Team"]}</span>

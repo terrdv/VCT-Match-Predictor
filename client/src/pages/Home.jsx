@@ -116,7 +116,7 @@ function Home() {
                 {loading ? (
                     <div className="loading">Loading...</div>
                 ) : (
-                    <div className="button-grid">
+                    <div className="button-grid glass">
                         {teams.map(team => (
                             <TeamButton 
                                 team={team} 
