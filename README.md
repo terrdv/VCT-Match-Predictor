@@ -15,11 +15,7 @@ Predict the outcome of official VCT matches using ML.
 
 ## Features
 
-- Predicts VCT match winners based on team statistics
-- Clean UI with dynamic charts and probability displays
-- RESTful API serving prediction results
-- Machine learning model (e.g. Random Forest Classifier)
-- Deployment with proper environment & security configs
+- Predicts VCT match winners based on team statistics and historical data using a random forest classifier
 
 ---
 
