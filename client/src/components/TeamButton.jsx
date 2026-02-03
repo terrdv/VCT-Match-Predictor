@@ -10,7 +10,7 @@ function TeamButton({ team, onTeamSelect, isSelected }) {
     return (
         <div className="team-button">
             <button 
-                className={`pick ${isSelected ? 'selected' : ''}`}
+                className={`pick glass ${isSelected ? 'selected' : ''}`}
                 onClick={handleClick}
             >
                 <img className="button_icon" src={`http://127.0.0.1:5000/${team["Image Path"]}`} alt={team["Team"]} />

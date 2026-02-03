@@ -1,4 +1,3 @@
-/* Dropdowns – inherits form styles from index.css */
 .dropdowns {
   display: flex;
   gap: var(--spacing-lg);
@@ -29,16 +28,7 @@
 .dropdowns select:focus { box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2), var(--shadow-md); background-color: var(--color-bg-tertiary); }
 .dropdowns select:active { transform: scale(0.98); }
 
-/* MakePrediction page: gradient buttons (scoped so Home page keeps its button styles) */
-.make-prediction .buttons {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-xl);
-  flex-wrap: wrap;
-  width: 100%;
-}
-
+.make-prediction .buttons { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-xl); flex-wrap: wrap; width: 100%; }
 .make-prediction .buttons button {
   padding: var(--spacing-md) var(--spacing-xl);
   background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);

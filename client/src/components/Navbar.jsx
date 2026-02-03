@@ -4,7 +4,7 @@ import '../css/Navbar.css'
 function NavBar() {
 
     return (
-        <nav className="navbar">
+        <nav className="navbar glass">
             <div className="app-name">
                 <Link to="/">VCT Match Predictor</Link>
             </div>

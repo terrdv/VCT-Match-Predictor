@@ -1,10 +1,8 @@
-/* Navbar */
 .navbar {
   padding: var(--spacing-md) var(--spacing-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-bg-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border-primary);
@@ -27,39 +25,14 @@
 
 .app-name { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); z-index: var(--z-base); }
 .app-name a { color: var(--color-text-primary); text-decoration: none; transition: color var(--transition-fast); display: inline-block; position: relative; }
-.app-name a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 2px;
-  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
-  transition: width var(--transition-base);
-}
+.app-name a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary)); transition: width var(--transition-base); }
 .app-name a:hover { color: var(--color-accent-primary); }
 .app-name a:hover::after { width: 100%; }
 
 .right { display: flex; gap: var(--spacing-lg); align-items: center; }
 
-.navbar-link {
-  font-size: var(--font-size-base);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-base);
-  color: var(--color-text-secondary);
-  position: relative;
-  font-weight: var(--font-weight-medium);
-}
-
-.navbar-link::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 0; height: 2px;
-  background: var(--color-accent-primary);
-  transition: width var(--transition-base);
-}
-
+.navbar-link { font-size: var(--font-size-base); padding: var(--spacing-sm) var(--spacing-md); border-radius: var(--radius-md); transition: all var(--transition-base); color: var(--color-text-secondary); position: relative; font-weight: var(--font-weight-medium); }
+.navbar-link::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--color-accent-primary); transition: width var(--transition-base); }
 .navbar-link:hover { color: var(--color-text-primary); background-color: rgba(100, 108, 255, 0.1); }
 .navbar-link:hover::before { width: calc(100% - var(--spacing-md)); }
 .navbar-link:active { transform: scale(0.98); }
